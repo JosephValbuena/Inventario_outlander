@@ -1,0 +1,12 @@
+.tables {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.table {
+    padding: 2rem;
+    
+    background: rgb(218, 77, 77);
+}
