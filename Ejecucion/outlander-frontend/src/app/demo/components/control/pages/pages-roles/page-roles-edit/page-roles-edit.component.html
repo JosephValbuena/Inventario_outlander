@@ -1,0 +1,16 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header p-card p-3 flex align-items-center justify-content-between">
+        <div class="title">
+            <h1>Editar un rol</h1>
+            <p>Aquí podrás editar un rol de la aplicación</p>
+        </div>
+        <div class="btn-back">
+            <button pButton pRipple label="Regresar" icon="pi pi-angle-left" class="p-button-secondary" (click)="goBack()"></button>
+        </div>
+    </div>
+    <div class="content-body p-card mt-3 p-3">
+        <app-roles-edit *ngIf="rol != null" [type]="type" [rol]="rol" [permisos]="permisos" [idToEdit]="idToEdit" (handleRoles)="editRol($event)"></app-roles-edit>
+    </div>
+</div>
+

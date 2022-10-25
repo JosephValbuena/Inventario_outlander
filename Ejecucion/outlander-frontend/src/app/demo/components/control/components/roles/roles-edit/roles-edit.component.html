@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="handleRol()">
+    <div class="input flex flex-column ">
+        <label for="float-input" class="text-lg mb-2">Nombre</label>
+        <input type="text" pInputText placeholder="nombre de permiso" formControlName="nombre"> 
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Descripción</label>
+        <input type="text" pInputText placeholder="Descripción del permiso" formControlName="descripcion"> 
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Tipo</label>
+        <p-dropdown [options]="tipos" formControlName="tipo" placeholder="Seleccione un tipo" optionLabel="name" optionValue="value" [showClear]="true"></p-dropdown>
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Permisos</label>
+        <p-multiSelect [options]="permisos" formControlName="permisos" defaultLabel="Seleccione permisos" optionLabel="descripcion"></p-multiSelect>
+    </div>
+    <div class="holder-btn">
+        <button *ngIf="type === 'create'" pButton pRipple type="submit" label="Crear rol" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+        <button *ngIf="type === 'edit'" pButton pRipple type="submit" label="Editar rol" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+<div class="layout-topbar" style="justify-content: space-between;">
+    <div class="principal-btns" style="display: flex;">
+        <a class="layout-topbar-logo" routerLink="">
+            <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
+            <span>SAKAI</span>
+        </a>
+    
+        <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+            <i class="pi pi-bars"></i>
+        </button>
+    </div>
+
+    <button *ngIf="showButton" pButton pRipple type="button" label="Salir" class="p-button-secondary p-button-text" icon="pi pi-angle-right" iconPos="right" (click)="logOut()"></button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+</div>

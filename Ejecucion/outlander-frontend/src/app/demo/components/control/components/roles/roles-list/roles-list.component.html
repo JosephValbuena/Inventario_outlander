@@ -1,0 +1,24 @@
+
+<p-table [value]="roles" styleClass="p-datatable-gridlines" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+        Tabla de roles
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="text-align: center;">Nombre</th>
+            <th style="text-align: center;">Descripción</th>
+            <th style="text-align: center;">Tipo</th>
+            <th style="text-align: center;">Permisos</th>
+            <th style="text-align: center;">Editar</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rol>
+        <tr>
+            <td style="text-align: center;">{{rol.nombre}}</td>
+            <td style="text-align: center;">{{rol.descripcion}}</td>
+            <td style="text-align: center;">{{rol.tipo}}</td>
+            <td style="text-align: center;"><span *ngFor="let permiso of rol.permisos">{{permiso.descripcion}}, </span></td>
+            <td style="text-align: center;"><p-button icon="pi pi-pencil" (click)="goToEdit(rol.idRol)"></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>

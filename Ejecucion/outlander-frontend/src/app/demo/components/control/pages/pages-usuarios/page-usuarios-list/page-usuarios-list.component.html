@@ -1,0 +1,13 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header p-card p-3">
+        <h1>Usuarios</h1>
+        <p>Aquí podrás encontrar la lista de los usuarios de la aplicación</p>
+    </div>
+    <div class="content-body p-card mt-3 p-3">
+        <div class="holder-btn mb-3">
+            <p-button label="Crear nuevo permiso" (click)="goToCreate()"></p-button>
+        </div>
+        <app-usuarios-list *ngIf="usuarios != null" [usuarios]="usuarios"></app-usuarios-list>
+    </div>
+</div>

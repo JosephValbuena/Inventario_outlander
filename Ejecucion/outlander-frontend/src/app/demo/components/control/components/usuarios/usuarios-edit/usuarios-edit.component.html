@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="handleUsuario()">
+    <div class="input flex flex-column ">
+        <label for="float-input" class="text-lg mb-2">Nombre</label>
+        <input type="text" pInputText placeholder="nombre de usuario" formControlName="nombre"> 
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Correo</label>
+        <input type="text" pInputText placeholder="Correo de usuario" formControlName="correo"> 
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Apellido</label>
+        <input type="text" pInputText placeholder="Apellido de usuario" formControlName="apellido"> 
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Roles</label>
+        <p-multiSelect [options]="roles" formControlName="roles" defaultLabel="Seleccione los roles" optionLabel="nombre"></p-multiSelect>
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Nombre de usuario</label>
+        <input type="text" pInputText placeholder="nombre de usuario" formControlName="nombreUsuario"> 
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Contraseña</label>
+        <p-password formControlName="contrasena" weakLabel="Débil" mediumLabel="Medio" strongLabel="Fuerte"></p-password>
+    </div>
+    <div class="holder-btn">
+        <button *ngIf="type === 'create'" pButton pRipple type="submit" label="Crear usuario" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+        <button *ngIf="type === 'edit'" pButton pRipple type="submit" label="Editar usuario" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+    </div>
+</form>

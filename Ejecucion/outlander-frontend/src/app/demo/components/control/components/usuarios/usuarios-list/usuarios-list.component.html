@@ -1,0 +1,26 @@
+
+<p-table [value]="usuarios" styleClass="p-datatable-gridlines" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+        Tabla de usuarios
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="text-align: center;">Nombre</th>
+            <th style="text-align: center;">Correo</th>
+            <th style="text-align: center;">Apellido</th>
+            <th style="text-align: center;">Roles</th>
+            <th style="text-align: center;">nombreUsuario</th>
+            <th style="text-align: center;">Editar</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usuario>
+        <tr>
+            <td style="text-align: center;">{{usuario.nombre}}</td>
+            <td style="text-align: center;">{{usuario.correo}}</td>
+            <td style="text-align: center;">{{usuario.apellido}}</td>
+            <td style="text-align: center;"><span *ngFor="let rol of usuario.roles">{{rol.nombre}}, </span></td>
+            <td style="text-align: center;">{{usuario.nombreUsuario}}</td>
+            <td style="text-align: center;"><p-button icon="pi pi-pencil" (click)="goToEdit(usuario.idUsuario)"></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>

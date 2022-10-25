@@ -1,0 +1,16 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header p-card p-3 flex align-items-center justify-content-between">
+        <div class="title">
+            <h1>Editar una mesa</h1>
+            <p>Aquí podrás editar una mesa de la aplicación</p>
+        </div>
+        <div class="btn-back">
+            <button pButton pRipple label="Regresar" icon="pi pi-angle-left" class="p-button-secondary" (click)="goBack()"></button>
+        </div>
+    </div>
+    <div class="content-body p-card mt-3 p-3">
+        <app-mesas-edit *ngIf="mesa != null" [type]="type" [mesa]="mesa" [idToEdit]="idToEdit" (handleMesas)="editarMesa($event)"></app-mesas-edit>
+    </div>
+</div>
+
