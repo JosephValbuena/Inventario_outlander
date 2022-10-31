@@ -1,30 +1,35 @@
 package com.outlander.outlander.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Data
+@Table(name = "permisos")
 public class Permiso {
 
-    @Transient
-    public static final String SEQUENCE_NAME = "permises_sequence";
-
     @Id
+    @Column(name = "per_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPermiso;
 
+    @Column(name = "per_nombre")
     private String nombre;
 
+    @Column(name = "per_descripcion")
     private String descripcion;
-
-    public static String getSequenceName() {
-        return SEQUENCE_NAME;
-    }
 
     public Long getIdPermiso() {
         return idPermiso;

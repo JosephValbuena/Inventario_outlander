@@ -19,9 +19,6 @@ public class UsuarioService extends GenericServiceImpl<Usuario, Long> implements
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private GenerarSecuenciaService generarSecuenciaService;
-
     @Override
     public CrudRepository<Usuario, Long> getDao() {
         return usuarioRepository;
@@ -29,7 +26,6 @@ public class UsuarioService extends GenericServiceImpl<Usuario, Long> implements
 
     public ResponseEntity<Usuario> createUsuario(Usuario usuario) {
         Usuario nUsuario = new Usuario();
-        nUsuario.setIdUsuario(generarSecuenciaService.getNextSequence(Usuario.SEQUENCE_NAME));
         nUsuario.setNombre(usuario.getNombre());
         nUsuario.setCorreo(usuario.getCorreo());
         nUsuario.setApellido(usuario.getApellido());

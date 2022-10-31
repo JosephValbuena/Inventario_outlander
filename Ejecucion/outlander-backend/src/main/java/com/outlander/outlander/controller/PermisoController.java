@@ -35,7 +35,7 @@ public class PermisoController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<Permiso> createPermise(@RequestBody Permiso permiso) {
-        return this.permisoService.createPermise(permiso);
+        return this.permisoService.crearPermiso(permiso);
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.PUT)

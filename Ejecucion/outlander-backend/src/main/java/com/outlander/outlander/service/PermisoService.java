@@ -18,18 +18,14 @@ public class PermisoService extends GenericServiceImpl<Permiso, Long> implements
 
     @Autowired
     private PermisoRepository permisoRepository;
-    
-    @Autowired
-    private GenerarSecuenciaService generarSecuenciaService;
 
     @Override
     public CrudRepository<Permiso, Long> getDao() {
         return permisoRepository;
     }
-    
-    public ResponseEntity<Permiso> createPermise(Permiso permiso) {
+
+    public ResponseEntity<Permiso> crearPermiso(Permiso permiso) {
         Permiso nPermiso = new Permiso();
-        nPermiso.setIdPermiso(generarSecuenciaService.getNextSequence(Permiso.SEQUENCE_NAME));
         nPermiso.setNombre(permiso.getNombre());
         nPermiso.setDescripcion(permiso.getDescripcion());
         Permiso createdPermise = permisoRepository.save(nPermiso);
@@ -38,7 +34,7 @@ public class PermisoService extends GenericServiceImpl<Permiso, Long> implements
         }
         return new ResponseEntity<Permiso>(createdPermise, HttpStatus.OK);
     }
-    
+
     public ResponseEntity<Permiso> updatePermiso(Permiso permiso) {
         Optional<Permiso> perOpt = this.permisoRepository.findById(permiso.getIdPermiso());
         if (perOpt.isEmpty()) {
@@ -51,7 +47,5 @@ public class PermisoService extends GenericServiceImpl<Permiso, Long> implements
         Permiso updatedPer = this.permisoRepository.save(per);
         return new ResponseEntity<Permiso>(updatedPer, HttpStatus.OK);
     }
-    
-    
 
 }

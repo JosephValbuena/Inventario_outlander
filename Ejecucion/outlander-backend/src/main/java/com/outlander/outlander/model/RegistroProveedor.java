@@ -1,5 +1,7 @@
 package com.outlander.outlander.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,31 +20,38 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "inventario_productos")
-public class InventarioProducto {
+@Table(name = "registro_proveedores")
+public class RegistroProveedor {
 
     @Id
-    @Column(name = "inv_id")
+    @Column(name = "registro_prov_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idInventario;
+    private Long idRegistro;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "prod_id")
     private Producto producto;
 
-    @Column(name = "inv_cant")
-    private short cantidad;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "prov_id")
+    private Proveedor proveedor;
+
+    @Column(name = "registro_prov_cant")
+    private Integer cantidad;
     
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "sede_id")
     private Sede sede;
 
-    public Long getIdInventario() {
-        return idInventario;
+    @Column(name = "registro_prov_fecha")
+    private LocalDateTime fecha_registro;
+
+    public Long getIdRegistro() {
+        return idRegistro;
     }
 
-    public void setIdInventario(Long idInventario) {
-        this.idInventario = idInventario;
+    public void setIdRegistro(Long idRegistro) {
+        this.idRegistro = idRegistro;
     }
 
     public Producto getProducto() {
@@ -53,12 +62,28 @@ public class InventarioProducto {
         this.producto = producto;
     }
 
-    public short getCantidad() {
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(short cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public LocalDateTime getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(LocalDateTime fecha_registro) {
+        this.fecha_registro = fecha_registro;
     }
 
 }

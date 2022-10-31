@@ -2,11 +2,13 @@ package com.outlander.outlander.repository;
 
 import java.util.Optional;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.outlander.outlander.model.Usuario;
 
-public interface UsuarioRepository extends MongoRepository<Usuario, Long> {
+@Repository
+public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
     
     Optional<Usuario> findByIdUsuario(Long id);
 

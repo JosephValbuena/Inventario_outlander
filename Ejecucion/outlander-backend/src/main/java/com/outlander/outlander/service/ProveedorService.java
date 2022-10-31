@@ -16,9 +16,6 @@ public class ProveedorService extends GenericServiceImpl<Proveedor, Long> {
     @Autowired
     private ProveedorRepository proveedorRepository;
 
-    @Autowired
-    private GenerarSecuenciaService generarSecuenciaService;
-
     @Override
     public CrudRepository<Proveedor, Long> getDao() {
         return this.proveedorRepository;
@@ -26,7 +23,6 @@ public class ProveedorService extends GenericServiceImpl<Proveedor, Long> {
 
     public ResponseEntity<Proveedor> createProveedor(Proveedor proveedor) {
         Proveedor nProveedor = new Proveedor();
-        nProveedor.setIdProveedor(generarSecuenciaService.getNextSequence(Proveedor.SEQUENCE_NAME));
         nProveedor.setNombre(proveedor.getNombre());
         nProveedor.setDescripcion(proveedor.getDescripcion());
         Proveedor createdProveedor = proveedorRepository.save(nProveedor);

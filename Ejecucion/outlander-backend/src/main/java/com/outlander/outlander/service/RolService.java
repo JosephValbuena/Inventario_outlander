@@ -19,9 +19,6 @@ public class RolService extends GenericServiceImpl<Rol, Long> implements RolServ
     @Autowired
     private RolRepository rolRepository;
 
-    @Autowired
-    private GenerarSecuenciaService generarSecuenciaService;
-
     @Override
     public CrudRepository<Rol, Long> getDao() {
         return this.rolRepository;
@@ -29,7 +26,6 @@ public class RolService extends GenericServiceImpl<Rol, Long> implements RolServ
 
     public ResponseEntity<Rol> createRol(Rol rol) {
         Rol nRol = new Rol();
-        nRol.setIdRol(generarSecuenciaService.getNextSequence(Rol.SEQUENCE_NAME));
         nRol.setNombre(rol.getNombre());
         nRol.setDescripcion(rol.getDescripcion());
         nRol.setTipo(rol.getTipo());
@@ -40,7 +36,7 @@ public class RolService extends GenericServiceImpl<Rol, Long> implements RolServ
         }
         return new ResponseEntity<Rol>(createdRol, HttpStatus.OK);
     }
-    
+
     public ResponseEntity<Rol> updateRol(Rol rol) {
         Optional<Rol> rolOpt = this.rolRepository.findById(rol.getIdRol());
         if (rolOpt.isEmpty()) {
@@ -54,6 +50,6 @@ public class RolService extends GenericServiceImpl<Rol, Long> implements RolServ
         ro.setPermisos(rol.getPermisos());
         Rol updatedRol = this.rolRepository.save(ro);
         return new ResponseEntity<Rol>(updatedRol, HttpStatus.OK);
-        
+
     }
 }

@@ -1,9 +1,11 @@
 package com.outlander.outlander.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.outlander.outlander.model.Sede;
 
-public interface SedeRepository extends MongoRepository<Sede, Long>{
+@Repository
+public interface SedeRepository extends CrudRepository<Sede, Long> {
 
 }

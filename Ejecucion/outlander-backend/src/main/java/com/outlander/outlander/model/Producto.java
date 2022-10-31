@@ -1,7 +1,11 @@
 package com.outlander.outlander.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,16 +14,19 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "productos")
 public class Producto {
 
-    @Transient
-    public static final String SEQUENCE_NAME = "product_sequence";
-
     @Id
+    @Column(name = "prod_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducto;
 
+    @Column(name = "prod_nombre")
     private String nombre;
 
+    @Column(name = "prod_marca")
     private String marca;
 
     public Long getIdProducto() {
@@ -44,10 +51,6 @@ public class Producto {
 
     public void setMarca(String marca) {
         this.marca = marca;
-    }
-
-    public static String getSequenceName() {
-        return SEQUENCE_NAME;
     }
 
 }

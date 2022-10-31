@@ -1,12 +1,12 @@
 package com.outlander.outlander.enums;
 
-public enum EstadoMesa {
+public enum EstadoPedido {
 
-    ocupado("ocupado"), libre("libre");
+    abierto("abierto"), cerrado("cerrado");
 
     private String key;
 
-    private EstadoMesa(String key) {
+    private EstadoPedido(String key) {
         this.key = key;
     }
 
@@ -18,8 +18,8 @@ public enum EstadoMesa {
         this.key = key;
     }
 
-    public static EstadoMesa findByKey(String key) {
-        for (EstadoMesa v : values()) {
+    public static EstadoPedido findByKey(String key) {
+        for (EstadoPedido v : values()) {
             if (key != null && v.getKey().toLowerCase().equals(key.toLowerCase())) {
                 return v;
             }

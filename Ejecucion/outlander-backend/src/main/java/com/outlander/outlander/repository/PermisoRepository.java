@@ -1,9 +1,11 @@
 package com.outlander.outlander.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.outlander.outlander.model.Permiso;
 
-public interface PermisoRepository extends MongoRepository<Permiso, Long> {
+@Repository
+public interface PermisoRepository  extends CrudRepository<Permiso, Long>{
 
 }

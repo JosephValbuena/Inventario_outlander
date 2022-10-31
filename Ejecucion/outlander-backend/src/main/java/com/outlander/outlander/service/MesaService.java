@@ -17,18 +17,14 @@ public class MesaService extends GenericServiceImpl<Mesa, Long> {
 
     @Autowired
     private MesaRepository mesaRepository;
-    
-    @Autowired
-    private GenerarSecuenciaService generarSecuenciaService;
 
     @Override
     public CrudRepository<Mesa, Long> getDao() {
         return this.mesaRepository;
     }
-    
+
     public ResponseEntity<Mesa> createMesa(Mesa mesa) {
         Mesa nMesa = new Mesa();
-        nMesa.setIdMesa(generarSecuenciaService.getNextSequence(Mesa.SEQUENCE_NAME));
         nMesa.setDescripcion(mesa.getDescripcion());
         nMesa.setNumMesa(mesa.getNumMesa());
         nMesa.setEstado(mesa.getEstado());
@@ -38,7 +34,7 @@ public class MesaService extends GenericServiceImpl<Mesa, Long> {
         }
         return new ResponseEntity<Mesa>(createdMesa, HttpStatus.OK);
     }
-    
+
     public ResponseEntity<Mesa> updateMesa(Mesa mesa) {
         Optional<Mesa> mesaOpt = this.mesaRepository.findById(mesa.getIdMesa());
         if (mesaOpt.isEmpty()) {
