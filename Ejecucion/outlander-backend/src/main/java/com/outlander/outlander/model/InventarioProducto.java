@@ -32,7 +32,7 @@ public class InventarioProducto {
 
     @Column(name = "inv_cant")
     private short cantidad;
-    
+
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "sede_id")
     private Sede sede;
@@ -61,4 +61,11 @@ public class InventarioProducto {
         this.cantidad = cantidad;
     }
 
+    public Sede getSede() {
+        return sede;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
+    }
 }

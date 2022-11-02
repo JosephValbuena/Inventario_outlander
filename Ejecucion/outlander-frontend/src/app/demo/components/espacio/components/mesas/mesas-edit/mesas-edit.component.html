@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="handleMesa()">
+<form [formGroup]="form" (ngSubmit)="handleMesa()" *ngIf="showTable">
     <div class="input flex flex-column ">
         <label for="float-input" class="text-lg mb-2">Descripción</label>
         <input type="text" pInputText placeholder="Descripción de mesa" formControlName="descripcion"> 
@@ -6,6 +6,10 @@
     <div class="input flex flex-column mt-3">
         <label for="float-input" class="text-lg mb-2">Número de mesa</label>
         <input type="number" pInputText placeholder="numero de mesa" formControlName="numMesa"> 
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Sede</label>
+        <p-dropdown [options]="sedes" formControlName="sede" placeholder="Seleccione una sede" optionLabel="nombre" [showClear]="true"></p-dropdown>
     </div>
     <div class="holder-btn">
         <button *ngIf="type === 'create'" pButton pRipple type="submit" label="Crear mesa" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>

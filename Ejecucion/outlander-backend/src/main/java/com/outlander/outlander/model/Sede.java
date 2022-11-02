@@ -14,6 +14,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -22,6 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+
 @Table(name = "sedes")
 public class Sede {
 
@@ -39,9 +43,12 @@ public class Sede {
     @OneToMany(mappedBy = "sede")
     private List<Mesa> mesas;
 
+    @JsonManagedReference
+    
     @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "sedes_usuarios", joinColumns = { @JoinColumn(name = "sede_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "usu_id") })
+    @JoinTable(name = "sedes_usuarios",
+        joinColumns = { @JoinColumn(name = "sede_id") },
+        inverseJoinColumns = {@JoinColumn(name = "usu_id") })
     private List<Usuario> usuarios;
 
     public Long getIdSede() {

@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -33,7 +35,8 @@ public class Mesa {
     private Byte numMesa;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "mesa_id")
+    @JoinColumn(name = "sede_id")
+    @JsonBackReference
     private Sede sede;
 
     public Long getIdMesa() {
@@ -44,14 +47,6 @@ public class Mesa {
         this.idMesa = idMesa;
     }
 
-    public Byte getNumMesa() {
-        return numMesa;
-    }
-
-    public void setNumMesa(Byte numMesa) {
-        this.numMesa = numMesa;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -60,4 +55,19 @@ public class Mesa {
         this.descripcion = descripcion;
     }
 
+    public Byte getNumMesa() {
+        return numMesa;
+    }
+
+    public void setNumMesa(Byte numMesa) {
+        this.numMesa = numMesa;
+    }
+
+    public Sede getSede() {
+        return sede;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
+    }
 }

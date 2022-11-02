@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Mesa } from 'src/app/demo/components/models/mesa.model';
+import { Sede } from 'src/app/demo/components/models/sede.model';
 import { MesasService } from '../../../services/mesas.service';
+import { SedesService } from '../../../services/sedes.service';
 
 @Component({
   selector: 'app-page-edit-mesas',
@@ -12,12 +14,15 @@ import { MesasService } from '../../../services/mesas.service';
 })
 export class PageEditMesasComponent implements OnInit {
 
+  showTable = true;
+  sedes: Sede[] = null;
   mesa: Mesa = null;
   idToEdit: number;
   type: 'create' | 'edit' = 'edit';
   constructor(
     private router: Router,
     private activatedR: ActivatedRoute,
+    private sedeService: SedesService,
     private mesaService: MesasService,
     private messageService: MessageService
   ) { }
@@ -32,24 +37,40 @@ export class PageEditMesasComponent implements OnInit {
         this.mesa = response;
       })
       .catch(() => {
-        this.showError();
+        this.showTable = false;
+        this.showError('Error de búsqueda', 'No se han encontrado sedes');
       })
     }
+    this.obtenerTodasLasSedes();
+  }
+
+  obtenerTodasLasSedes(): void {
+    this.sedeService.obtenerTodasLasSedes()
+    .then(response => {
+      this.sedes = response;
+      if (this.sedes.length === 0) {
+        this.showTable = false;
+        this.showError('Algo ha ocurrido...', 'Comunícate con soporte');
+      }
+    })
+    .catch(() => {
+      this.showTable = false;
+      this.showError('Algo ha ocurrido...', 'Comunícate con soporte');
+    })
   }
 
   editarMesa(event: {
     idMesa?: number;
     descripcion: string;
     numMesa: number;
-    estado: 'ocupado' | 'libre';
+    sede: Sede;
   }) {
     this.mesa = {
       idMesa: event.idMesa,
       descripcion: event.descripcion,
       numMesa: event.numMesa,
-      estado: 'libre'
+      sede: event.sede
     }
-    console.log(this.mesa);
     this.mesaService.actualizarMesa(this.mesa)
     .then(() =>{
       this.showSuccess();
@@ -71,11 +92,11 @@ export class PageEditMesasComponent implements OnInit {
     });
   }
 
-  showError() {
+  showError(summary: string, detail: string) {
     this.messageService.add({
       severity:'error',
-      summary: 'Algo ha ocurrido...',
-      detail: 'Comunícate con soporte'
+      summary,
+      detail
     });
   }
 

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MesasRoutingModule } from './mesas-routing.module';
 import { MesasListComponent } from './mesas-list/mesas-list.component';
 import { MesasEditComponent } from './mesas-edit/mesas-edit.component';
 import { TableModule } from 'primeng/table';
@@ -23,7 +22,6 @@ import { DropdownModule } from 'primeng/dropdown';
     CommonModule,
     DropdownModule,
     InputTextModule,
-    MesasRoutingModule,
     ReactiveFormsModule,
   ],
   exports: [

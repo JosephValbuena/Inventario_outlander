@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="content-body p-card mt-3 p-3">
-        <app-mesas-edit *ngIf="mesa != null" [type]="type" [mesa]="mesa" [idToEdit]="idToEdit" (handleMesas)="editarMesa($event)"></app-mesas-edit>
+        <app-mesas-edit *ngIf="mesa != null && sedes != null" [type]="type" [mesa]="mesa" [sedes]="sedes" [showTable]="showTable" [idToEdit]="idToEdit" (handleMesas)="editarMesa($event)"></app-mesas-edit>
     </div>
 </div>
 

@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.outlander.outlander.model.Proveedor;
 import com.outlander.outlander.repository.ProveedorRepository;
+import com.outlander.outlander.service.api.ProveedorServiceApi;
 import com.outlander.outlander.utils.GenericServiceImpl;
 
 @Service
-public class ProveedorService extends GenericServiceImpl<Proveedor, Long> {
+public class ProveedorService extends GenericServiceImpl<Proveedor, Long> implements ProveedorServiceApi {
 
     @Autowired
     private ProveedorRepository proveedorRepository;

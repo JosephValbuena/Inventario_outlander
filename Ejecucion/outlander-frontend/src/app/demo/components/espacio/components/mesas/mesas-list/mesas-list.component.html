@@ -1,4 +1,7 @@
-<p-table [value]="mesas" styleClass="p-datatable-gridlines" responsiveLayout="scroll">
+<p-table [value]="mesas" styleClass="p-datatable-gridlines" responsiveLayout="scroll"
+    [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} elementos" 
+    [rowsPerPageOptions]="[10,25,50]">
     <ng-template pTemplate="caption">
         Tabla de mesas
     </ng-template>

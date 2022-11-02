@@ -1,0 +1,12 @@
+<div class="content">
+    <div class="content-header p-card p-3">
+        <h1>Lista de sedes</h1>
+        <p>Aqui podrás encontrar la lista de sedes de la aplicación</p>
+    </div>
+    <div class="content-body p-card mt-3 p-3">
+        <div class="holder-btn mb-3">
+            <p-button label="Crear nueva sede" (click)="goToCreate()"></p-button>
+        </div>
+        <app-sedes-list *ngIf="sedes != null" [sedes]="sedes"></app-sedes-list>
+    </div>
+</div>

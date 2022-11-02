@@ -5,6 +5,6 @@ export interface Sede {
     idSede: number;
     nombre: string;
     descripcion: string;
-    mesas: Mesa[];
+    mesas?: Mesa[];
     usuarios: Usuario[];
 }

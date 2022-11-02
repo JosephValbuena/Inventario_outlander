@@ -78,6 +78,14 @@ public class RegistroProveedor {
         this.cantidad = cantidad;
     }
 
+    public Sede getSede() {
+        return sede;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
+    }
+
     public LocalDateTime getFecha_registro() {
         return fecha_registro;
     }

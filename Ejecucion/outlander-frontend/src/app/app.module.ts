@@ -20,6 +20,7 @@ import { EspacioModule } from './demo/components/espacio/espacio.module';
 import { PagesSedesModule } from './demo/components/espacio/pages/pages-sedes/pages-sedes.module';
 import { PagesMesasModule } from './demo/components/espacio/pages/pages-mesas/pages-mesas.module';
 import { MesasModule } from './demo/components/espacio/components/mesas/mesas.module';
+import { SedesModule } from './demo/components/espacio/components/sedes/sedes.module';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { MesasModule } from './demo/components/espacio/components/mesas/mesas.mo
         EspacioModule,
         PagesSedesModule,
         PagesMesasModule,
-        MesasModule
+        MesasModule,
+        SedesModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

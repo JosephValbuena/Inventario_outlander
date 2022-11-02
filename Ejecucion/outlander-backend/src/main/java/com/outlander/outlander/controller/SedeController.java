@@ -34,13 +34,13 @@ public class SedeController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<Sede> createSede(@RequestBody Sede sede) {
-        return this.sedeService.createSede(sede);
+    public ResponseEntity<Sede> crearSede(@RequestBody Sede sede) {
+        return this.sedeService.crearSede(sede);
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<Sede> updateSede(@RequestBody Sede sede) {
-        return this.sedeService.updateSede(sede);
+    public ResponseEntity<Sede> actualizarSede(@RequestBody Sede sede) {
+        return this.sedeService.actualizarSede(sede);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)

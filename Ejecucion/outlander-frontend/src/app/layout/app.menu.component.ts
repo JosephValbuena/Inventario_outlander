@@ -30,9 +30,26 @@ export class AppMenuComponent implements OnInit {
                     label: 'Espacios',
                     items: [
                         { label: 'Mesas', icon: 'pi pi-table', routerLink: ['/espacio/mesas'] },
-                        { label: 'Sedes', icon: 'pi pi-home', routerLink: ['/espacio/sedes'] },            
+                        { label: 'Sedes', icon: 'pi pi-home', routerLink: ['/espacio/sedes'] },
+                        { label: 'Proveedores', icon: 'pi pi-car', routerLink: ['/espacio/sedes'] },
                     ]
-                }
+                },
+                {
+                    label: 'Productos',
+                    items: [
+                        { label: 'Productos', icon: 'pi pi-map', routerLink: ['/core/mesas/sede85'] },
+                        { label: 'Inventario productos', icon: 'pi pi-box', routerLink: ['/core/mesas/sedeGalerias'] },
+                    ]
+                },
+                {
+                    label: 'Atención en mesas',
+                    items: [
+                        { label: 'Sede 85', icon: 'pi pi-clone', routerLink: ['/core/mesas/sede85'] },
+                        { label: 'Sede Galerías', icon: 'pi pi-clone', routerLink: ['/core/mesas/sedeGalerias'] },            
+                        { label: 'Sede Chapinero', icon: 'pi pi-clone', routerLink: ['/core/mesas/sedeChapinero'] },            
+                    ]
+                },
+                
             ]
         } else {
             this.model = [
@@ -187,3 +204,4 @@ export class AppMenuComponent implements OnInit {
         }
     }
 }
+

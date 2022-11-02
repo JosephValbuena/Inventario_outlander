@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Mesa } from 'src/app/demo/components/models/mesa.model';
+import { Sede } from 'src/app/demo/components/models/sede.model';
 
 @Component({
   selector: 'app-mesas-edit',
@@ -9,6 +10,8 @@ import { Mesa } from 'src/app/demo/components/models/mesa.model';
 })
 export class MesasEditComponent implements OnInit {
 
+  @Input() showTable: boolean = false;
+  @Input() sedes: Sede[] = null;
   @Input() type: 'create' | 'edit' = 'create';
   @Input() mesa: Mesa;
   @Input() idToEdit: number;
@@ -16,7 +19,7 @@ export class MesasEditComponent implements OnInit {
     idMesa?: number;
     descripcion: string;
     numMesa: number;
-    estado: 'ocupado' | 'libre';
+    sede: Sede;
   }> = new EventEmitter;
   _form: FormGroup;
   constructor() { }
@@ -30,6 +33,7 @@ export class MesasEditComponent implements OnInit {
         idMesa: new FormControl(this.type === 'create'? '' : this.idToEdit),
         descripcion: new FormControl(this.type === 'create'? '' : this.mesa.descripcion, [Validators.required]),
         numMesa: new FormControl(this.type === 'create'? '' : this.mesa.numMesa, [Validators.required]),
+        sede: new FormControl(this.type === 'create'? '' : this.mesa.sede, [Validators.required]),
       });
     }
     return this._form;
@@ -48,7 +52,7 @@ export class MesasEditComponent implements OnInit {
       idMesa: this.idToEdit,
       descripcion: this.formRaw.descripcion,
       numMesa: this.formRaw.numMesa,
-      estado: 'libre'
+      sede: this.formRaw.sede
     });
   }
 

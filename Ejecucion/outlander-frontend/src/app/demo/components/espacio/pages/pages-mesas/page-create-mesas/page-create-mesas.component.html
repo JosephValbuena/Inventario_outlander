@@ -10,6 +10,6 @@
         </div>
     </div>
     <div class="content-body p-card mt-3 p-3">
-      <app-mesas-edit [type]="type" (handleMesas)="crearMesa($event)"></app-mesas-edit>
+      <app-mesas-edit *ngIf="sedes != null" [type]="type" [sedes]="sedes" [showTable]="showTable" (handleMesas)="crearMesa($event)"></app-mesas-edit>
     </div>
 </div>

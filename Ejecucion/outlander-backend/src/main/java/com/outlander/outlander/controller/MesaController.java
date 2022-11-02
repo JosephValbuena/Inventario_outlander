@@ -35,12 +35,12 @@ public class MesaController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<Mesa> createMesa(@RequestBody Mesa mesa) {
-        return this.mesaService.createMesa(mesa);
+        return this.mesaService.crearMesa(mesa);
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Mesa> updateMesa(@RequestBody Mesa mesa) {
-        return this.mesaService.updateMesa(mesa);
+        return this.mesaService.actualizarMesa(mesa);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
