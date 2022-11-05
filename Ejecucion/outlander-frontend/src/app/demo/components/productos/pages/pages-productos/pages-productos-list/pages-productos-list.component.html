@@ -1,0 +1,13 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header card">
+        <h1>Productos</h1>
+        <p>Aquí podrás encontrar la lista de los productos que maneja el bar en todas sus sedes</p>
+    </div>
+    <div class="content-body card">
+        <div class="holder-btn mb-3">
+            <p-button label="Crear nuevo permiso" (click)="goToCreate()"></p-button>
+        </div>
+        <app-productos-list *ngIf="productos != null" [productos]="productos"></app-productos-list>
+    </div>
+</div>

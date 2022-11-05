@@ -11,11 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,12 +35,7 @@ public class Sede {
 
     @Column(name = "sede_descripcion")
     private String descripcion;
-
-    @OneToMany(mappedBy = "sede")
-    private List<Mesa> mesas;
-
-    @JsonManagedReference
-    
+ 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "sedes_usuarios",
         joinColumns = { @JoinColumn(name = "sede_id") },
@@ -73,14 +64,6 @@ public class Sede {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public List<Mesa> getMesas() {
-        return mesas;
-    }
-
-    public void setMesas(List<Mesa> mesas) {
-        this.mesas = mesas;
     }
 
     public List<Usuario> getUsuarios() {

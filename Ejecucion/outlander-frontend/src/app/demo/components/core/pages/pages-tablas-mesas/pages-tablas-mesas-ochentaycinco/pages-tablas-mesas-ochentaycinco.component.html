@@ -1,0 +1,14 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header card">
+        <h1>Mesas sede 85</h1>
+        <p>Aquí puedes encontrar las mesas de la sede 85 y visualizar si están con un pedido en curso o disponibles.</p>
+    </div>
+    <div class="content-body card">
+        <div class="grid-s">
+            <div class="col3 available p-card" *ngFor="let mesa of mesas">
+                <button pButton pRipple type="button" label="" class="button-white p-button-text">Mesa No. <span>{{mesa.numMesa}}</span></button>
+            </div>
+        </div>
+    </div>
+</div>

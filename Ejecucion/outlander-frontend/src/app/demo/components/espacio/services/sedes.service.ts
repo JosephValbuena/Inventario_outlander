@@ -27,5 +27,9 @@ export class SedesService {
   actualizarSede(sede: Sede): Promise<any> {
     return this.http.put<Promise<any>>(`${environment.backServices.back}/space/campus/update`, sede).toPromise();
   }
+
+  obtenerSedePorNombre(nombre: String): Promise<any> {
+    return this.http.get<Promise<any>>(`${environment.backServices.back}/space/campus/obtener-por-nombre/${nombre}`).toPromise();
+  }
   
 }

@@ -44,8 +44,8 @@ public class Pedido {
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "pedidos_productos", joinColumns = { @JoinColumn(name = "pedido_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "prod_id") })
-    private List<Producto> productos;
+            @JoinColumn(name = "inv_id") })
+    private List<InventarioProducto> productos;
 
     @Column(name = "pedido_cants")
     private Integer[] cantidades;
@@ -77,11 +77,11 @@ public class Pedido {
         this.meseros = meseros;
     }
 
-    public List<Producto> getProductos() {
+    public List<InventarioProducto> getProductos() {
         return productos;
     }
 
-    public void setProductos(List<Producto> productos) {
+    public void setProductos(List<InventarioProducto> productos) {
         this.productos = productos;
     }
 

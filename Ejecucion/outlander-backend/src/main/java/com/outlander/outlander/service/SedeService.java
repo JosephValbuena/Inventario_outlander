@@ -1,5 +1,6 @@
 package com.outlander.outlander.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class SedeService extends GenericServiceImpl<Sede, Long> implements SedeS
     }
 
     public ResponseEntity<Sede> crearSede(Sede sede) {
+        if (validarSiExiste(sede.getNombre())) {
+            return new ResponseEntity<Sede>(HttpStatus.FOUND);
+        }
         for (Usuario usu : sede.getUsuarios()) {
             Optional<Usuario> usuarioOpt = this.usuarioRepository.findById(usu.getIdUsuario());
             if (usuarioOpt.isEmpty()) {
@@ -70,4 +74,19 @@ public class SedeService extends GenericServiceImpl<Sede, Long> implements SedeS
         return new ResponseEntity<Sede>(updateSede, HttpStatus.OK);
     }
 
+    public ResponseEntity<Sede> obtenerPorNombre(String nombre) {
+        List<Sede> sedes = this.sedeRepository.findByNombre(nombre);
+        if (sedes.isEmpty()) {
+            return new ResponseEntity<Sede>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Sede>(sedes.get(0), HttpStatus.OK);
+    }
+    
+    private boolean validarSiExiste(String nombre) {
+        List<Sede> sedes = this.sedeRepository.findByNombre(nombre);
+        if (sedes.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 }

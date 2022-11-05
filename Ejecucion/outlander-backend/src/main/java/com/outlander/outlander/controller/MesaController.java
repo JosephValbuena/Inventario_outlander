@@ -42,6 +42,11 @@ public class MesaController {
     public ResponseEntity<Mesa> updateMesa(@RequestBody Mesa mesa) {
         return this.mesaService.actualizarMesa(mesa);
     }
+    
+    @RequestMapping(value = "/all-by-sede/{idSede}", method = RequestMethod.GET)
+    public ResponseEntity<List<Mesa>> updateMesa(@PathVariable Long idSede) {
+        return this.mesaService.obtenerMesasPorSede(idSede);
+    }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public ResponseEntity<Mesa> deleteMesa(@PathVariable Long id) {

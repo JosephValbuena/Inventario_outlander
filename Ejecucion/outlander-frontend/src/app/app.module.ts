@@ -4,13 +4,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
-import { ProductService } from './demo/service/product.service';
-import { CountryService } from './demo/service/country.service';
-import { CustomerService } from './demo/service/customer.service';
-import { EventService } from './demo/service/event.service';
-import { IconService } from './demo/service/icon.service';
-import { NodeService } from './demo/service/node.service';
-import { PhotoService } from './demo/service/photo.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ControlModule } from './demo/components/control/control.module';
 import { PagesRolesModule } from './demo/components/control/pages/pages-roles/pages-roles.module';
@@ -21,6 +14,12 @@ import { PagesSedesModule } from './demo/components/espacio/pages/pages-sedes/pa
 import { PagesMesasModule } from './demo/components/espacio/pages/pages-mesas/pages-mesas.module';
 import { MesasModule } from './demo/components/espacio/components/mesas/mesas.module';
 import { SedesModule } from './demo/components/espacio/components/sedes/sedes.module';
+import { CoreModule } from './demo/components/core/core.module';
+import { PagesTablasMesasModule } from './demo/components/core/pages/pages-tablas-mesas/pages-tablas-mesas.module';
+import { PagesPedidosModule } from './demo/components/core/pages/pages-pedidos/pages-pedidos.module';
+import { PedidosModule } from './demo/components/core/components/pedidos/pedidos.module';
+import { ProductosModule } from './demo/components/productos/productos.module';
+import { PagesProductosModule } from './demo/components/productos/pages/pages-productos/pages-productos.module';
 
 @NgModule({
     declarations: [
@@ -38,12 +37,16 @@ import { SedesModule } from './demo/components/espacio/components/sedes/sedes.mo
         PagesSedesModule,
         PagesMesasModule,
         MesasModule,
-        SedesModule
+        SedesModule,
+        CoreModule,
+        PagesTablasMesasModule,
+        PagesPedidosModule,
+        PedidosModule,
+        ProductosModule,
+        PagesProductosModule
     ],
     providers: [
-        { provide: LocationStrategy, useClass: HashLocationStrategy },
-        CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],
     bootstrap: [AppComponent]
 })

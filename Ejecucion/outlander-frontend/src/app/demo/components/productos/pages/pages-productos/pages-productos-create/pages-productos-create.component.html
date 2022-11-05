@@ -1,0 +1,15 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header card p-3 flex align-items-center justify-content-between">
+        <div class="title">
+            <h1>Crear un producto</h1>
+            <p>En este espacio podrás crear un nuevo producto para la aplicación</p>
+        </div>
+        <div class="btn-back">
+            <button pButton pRipple label="Regresar" icon="pi pi-angle-left" class="p-button-secondary" (click)="goBack()"></button>
+        </div>
+    </div>
+    <div class="content-body card">
+        <app-productos-edit [type]="type" (manejoProductos)="crearProducto($event)"></app-productos-edit>
+    </div>
+</div>

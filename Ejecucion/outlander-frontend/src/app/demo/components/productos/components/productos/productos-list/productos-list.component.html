@@ -1,0 +1,22 @@
+<p-table [value]="productos" styleClass="p-datatable-gridlines" responsiveLayout="scroll" 
+    [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} elementos" 
+    [rowsPerPageOptions]="[10,25,50]">
+    <ng-template pTemplate="caption">
+        Tabla de productos
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="text-align: center;">Nombre</th>
+            <th style="text-align: center;">Marca</th>
+            <th style="text-align: center;">Editar</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-producto>
+        <tr>
+            <td style="text-align: center;">{{producto.nombre}}</td>
+            <td style="text-align: center;">{{producto.marca}}</td>
+            <td style="text-align: center;"><p-button icon="pi pi-pencil" (click)="goToEdit(producto.idProducto)"></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>

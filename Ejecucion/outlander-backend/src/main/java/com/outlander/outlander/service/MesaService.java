@@ -1,5 +1,6 @@
 package com.outlander.outlander.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class MesaService extends GenericServiceImpl<Mesa, Long> implements MesaS
         if (createdMesa == null) {
             return new ResponseEntity<Mesa>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<Mesa>(HttpStatus.OK);
+        return new ResponseEntity<Mesa>(createdMesa, HttpStatus.OK);
     }
 
     public ResponseEntity<Mesa> actualizarMesa(Mesa mesa) {
@@ -63,6 +64,20 @@ public class MesaService extends GenericServiceImpl<Mesa, Long> implements MesaS
         if (updatedMesa == null) {
             return new ResponseEntity<Mesa>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<Mesa>(HttpStatus.OK);
+        return new ResponseEntity<Mesa>(updatedMesa, HttpStatus.OK);
+    }
+    
+    public ResponseEntity<List<Mesa>> obtenerMesasPorSede(Long idSede) {
+        List<Mesa> mesas = null;
+        try {
+            mesas = this.mesaRepository.obtenerMesasPorIdSede(idSede);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<List<Mesa>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        if (mesas.size() == 0) {
+            return new ResponseEntity<List<Mesa>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<Mesa>>(mesas, HttpStatus.OK);
     }
 }

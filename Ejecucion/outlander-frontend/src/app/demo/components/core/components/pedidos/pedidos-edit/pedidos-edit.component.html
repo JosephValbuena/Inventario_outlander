@@ -1,0 +1,32 @@
+<!-- <p-table [value]="productosSeleccionados" responsiveLayout="scroll" styleClass="p-datatable-gridlines" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Cantidad</th>
+            <th>Quantity</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td>{{product.code}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.quantity}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+<form [formGroup]="form" (ngSubmit)="manejarPedido()">
+    <div class="input flex flex-column ">
+        <label for="float-input" class="text-lg mb-2">Nombre</label>
+        <input type="text" pInputText placeholder="nombre de permiso" formControlName="nombre"> 
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Descripción</label>
+        <input type="text" pInputText placeholder="Descripción del permiso" formControlName="descripcion"> 
+    </div>
+    <div class="holder-btn">
+        <button *ngIf="type === 'create'" pButton pRipple type="submit" label="Crear permiso" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+        <button *ngIf="type === 'edit'" pButton pRipple type="submit" label="Editar permiso" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+    </div>
+</form> -->

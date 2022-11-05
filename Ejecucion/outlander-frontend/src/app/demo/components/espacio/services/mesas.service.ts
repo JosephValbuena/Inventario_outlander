@@ -27,4 +27,8 @@ export class MesasService {
   actualizarMesa(mesa: Mesa): Promise<any> {
     return this.http.put<Promise<any>>(`${environment.backServices.back}/space/tables/update`, mesa).toPromise();
   }
+
+  obtenerMesaPorSede(idSede: number): Promise<any> {
+    return this.http.get<Promise<any>>(`${environment.backServices.back}/space/tables/all-by-sede/${idSede}`).toPromise();
+  }
 }

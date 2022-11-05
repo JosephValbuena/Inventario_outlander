@@ -9,7 +9,6 @@
         <tr>
             <th style="text-align: center;">Nombre</th>
             <th style="text-align: center;">Descripción</th>
-            <th style="text-align: center;">Mesas</th>
             <th style="text-align: center;">Usuarios</th>
             <th style="text-align: center;">Editar</th>
         </tr>
@@ -18,7 +17,6 @@
         <tr>
             <td style="text-align: center;">{{sede.nombre}}</td>
             <td style="text-align: center;">{{sede.descripcion}}</td>
-            <td style="text-align: center;"><span *ngFor="let mesa of sede.mesas">{{mesa.descripcion}}, </span></td>
             <td style="text-align: center;"><span *ngFor="let usuario of sede.usuarios">{{usuario.nombre}}, </span></td>
             <td style="text-align: center;"><p-button icon="pi pi-pencil" (click)="goToEdit(sede.idSede)"></p-button></td>
         </tr>

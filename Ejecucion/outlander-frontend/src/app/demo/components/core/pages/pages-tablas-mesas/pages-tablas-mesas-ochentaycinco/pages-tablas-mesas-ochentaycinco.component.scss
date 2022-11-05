@@ -1,0 +1,26 @@
+.grid-s {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.col3 {
+    margin: 1em;
+    padding: 2em;
+    text-align: center;
+}
+
+.available {
+    background-color: #67bb5c;
+}
+
+.occupied {
+    background-color: #F56C62;
+}
+
+.button-white {
+    color: white;
+}
+
+.button-white:hover {
+    color: black !important;
+}

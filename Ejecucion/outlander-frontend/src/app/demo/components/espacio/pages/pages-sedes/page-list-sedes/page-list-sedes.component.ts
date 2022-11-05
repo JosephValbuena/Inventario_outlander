@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { UsuariosService } from 'src/app/demo/components/control/services/usuarios.service';
 import { Sede } from 'src/app/demo/components/models/sede.model';
 import { SedesService } from '../../../services/sedes.service';
 

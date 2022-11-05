@@ -43,6 +43,10 @@ public class SedeController {
         return this.sedeService.actualizarSede(sede);
     }
 
+    @RequestMapping(value = "/obtener-por-nombre/{nombre}", method = RequestMethod.GET)
+    public ResponseEntity<Sede> obtenerPorNombre(@PathVariable String nombre) {
+        return this.sedeService.obtenerPorNombre(nombre);
+    }
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public ResponseEntity<Sede> deleteSede(@PathVariable Long id) {
         Sede sede = sedeService.get(id);
