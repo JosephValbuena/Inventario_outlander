@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="manejoRegistro()">
+    <div class="input flex flex-column ">
+        <label for="float-input" class="text-lg mb-2">Producto</label>
+        <p-dropdown [options]="procuctos" formControlName="producto" placeholder="Seleccione un producto" optionLabel="nombre" [showClear]="true"></p-dropdown>
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Proveedor</label>
+        <p-dropdown [options]="proveedores" formControlName="proveedor" placeholder="Seleccione un proveedor" optionLabel="nombre" [showClear]="true"></p-dropdown>
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Sede</label>
+        <p-dropdown [options]="sedes" formControlName="sede" placeholder="Seleccione una sede" optionLabel="nombre" [showClear]="true"></p-dropdown>
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">cantidad</label>
+        <input type="number" pInputText placeholder="cantidad del producto" formControlName="cantidad"> 
+    </div>
+    <div class="holder-btn">
+        <button *ngIf="type === 'create'" pButton pRipple type="submit" label="Crear registro" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+        <button *ngIf="type === 'edit'" pButton pRipple type="submit" label="Editar proveedor" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+    </div>
+</form>

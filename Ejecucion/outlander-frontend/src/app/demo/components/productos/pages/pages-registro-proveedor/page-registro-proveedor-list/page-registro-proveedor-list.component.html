@@ -1,0 +1,13 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header card">
+        <h1>Entrada de inventario</h1>
+        <p>Aquí podrás encontrar la lista nuevas entradas de producto</p>
+    </div>
+    <div class="content-body card">
+        <div class="holder-btn mb-3">
+            <p-button label="Crear nuevo registro" (click)="goToCreate()"></p-button>
+        </div>
+        <app-registro-proveedor-list *ngIf="registros != null" [registros]="registros"></app-registro-proveedor-list>
+    </div>
+</div>

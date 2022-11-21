@@ -37,8 +37,13 @@ public class InventarioProductoController {
         return this.service.crearInventarioProducto(inventarioProducto);
     }
     
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public ResponseEntity<InventarioProducto> actualizar(@RequestBody InventarioProducto inventarioProducto) {
         return this.service.actualizarInventarioProducto(inventarioProducto);
+    }
+    
+    @RequestMapping(value = "/findBySedeAndProducto/{sede}/{producto}", method = RequestMethod.PUT)
+    public ResponseEntity<InventarioProducto> actualizar(@PathVariable(name = "sede") Long idSede, @PathVariable(name = "producto") Long idProducto) {
+        return this.service.findInventarioBySedeAndProducto(idProducto, idSede);
     }
 }

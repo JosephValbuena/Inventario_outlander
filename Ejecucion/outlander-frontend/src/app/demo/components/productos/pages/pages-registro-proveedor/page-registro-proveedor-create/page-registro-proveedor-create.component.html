@@ -1,0 +1,15 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header card p-3 flex align-items-center justify-content-between">
+        <div class="title">
+            <h1>Crear un nuevo registro</h1>
+            <p>En este espacio podrás crear una nueva entrada de productos al inventario para la aplicación</p>
+        </div>
+        <div class="btn-back">
+            <button pButton pRipple label="Regresar" icon="pi pi-angle-left" class="p-button-secondary" (click)="goBack()"></button>
+        </div>
+    </div>
+    <div class="content-body card">
+        <app-registro-proveedor-edit [procuctos]="productos" [sedes]="sedes" [proveedores]="proveedores" [type]="type" (manejoregistros)="crearRegistro($event)"></app-registro-proveedor-edit>
+    </div>
+</div>

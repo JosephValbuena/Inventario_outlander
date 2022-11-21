@@ -31,5 +31,9 @@ export class SedesService {
   obtenerSedePorNombre(nombre: String): Promise<any> {
     return this.http.get<Promise<any>>(`${environment.backServices.back}/space/campus/obtener-por-nombre/${nombre}`).toPromise();
   }
+
+  obtenerSedePorUsuario(usuario: number): Promise<any> {
+    return this.http.get<Promise<any>>(`${environment.backServices.back}/space/campus/obtener-por-usuario/${usuario}`).toPromise();
+  }
   
 }

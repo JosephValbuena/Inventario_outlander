@@ -1,0 +1,21 @@
+<div class="showProductos">
+    <div class="input flex flex-column ">
+        <label for="float-input" class="text-lg mb-2">Descripción</label>
+        <p-dropdown [options]="productos" [(ngModel)]="productoSeleccionado" placeholder="Seleccione un producto" optionLabel="producto.name" [showClear]="true"></p-dropdown>
+        <p-button label="Seleccionar"></p-button>
+    </div>
+</div>
+<div class="choseQuantities">
+    <div class="handle flex justify-content-between align-items-center" *ngFor="let producto of productosMoment; let i = index">
+        <div class="producto">
+            <p>{{producto.producto.nombre}} actualmente en inventario: {{producto.cantidad}}</p>
+        </div>
+        <div class="cantidad">
+            <label for="float-input" class="text-lg mb-2">Seleccione la cantidad</label>
+        <input type="number" pInputText placeholder="numero de mesa" [(ngModel)]="cantidades[i]"> 
+        </div>
+    </div>
+</div>
+<div class="keepAll">
+    <p-button label="Guardar pedido"></p-button>
+</div>

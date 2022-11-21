@@ -20,6 +20,13 @@ import { PagesPedidosModule } from './demo/components/core/pages/pages-pedidos/p
 import { PedidosModule } from './demo/components/core/components/pedidos/pedidos.module';
 import { ProductosModule } from './demo/components/productos/productos.module';
 import { PagesProductosModule } from './demo/components/productos/pages/pages-productos/pages-productos.module';
+import { PagesInventarioProductosModule } from './demo/components/productos/pages/pages-inventario-productos/pages-inventario-productos.module';
+import { InventarioProductosModule } from './demo/components/productos/components/inventario-productos/inventario-productos.module';
+import { PagesProveedoresModule } from './demo/components/productos/pages/pages-proveedores/pages-proveedores.module';
+import { ProveedoresModule } from './demo/components/productos/components/proveedores/proveedores.module';
+import { PagesRegistroProveedorModule } from './demo/components/productos/pages/pages-registro-proveedor/pages-registro-proveedor.module';
+import { RegistroProveedorModule } from './demo/components/productos/components/registro-proveedor/registro-proveedor.module';
+import { HandlePedidosModule } from './demo/components/pedidos/components/handle-pedidos/handle-pedidos.module';
 
 @NgModule({
     declarations: [
@@ -43,7 +50,14 @@ import { PagesProductosModule } from './demo/components/productos/pages/pages-pr
         PagesPedidosModule,
         PedidosModule,
         ProductosModule,
-        PagesProductosModule
+        PagesProductosModule,
+        PagesInventarioProductosModule,
+        InventarioProductosModule,
+        PagesProveedoresModule,
+        ProveedoresModule,
+        PagesRegistroProveedorModule,
+        RegistroProveedorModule,
+        HandlePedidosModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

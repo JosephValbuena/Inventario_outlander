@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { MesasService } from 'src/app/demo/components/espacio/services/mesas.service';
 import { SedesService } from 'src/app/demo/components/espacio/services/sedes.service';
@@ -16,6 +17,7 @@ export class PagesTablasMesasOchentaycincoComponent implements OnInit {
   sede: Sede = null;
   mesas: Mesa[] = null;
   constructor(
+    private router: Router,
     private mesasService: MesasService,
     private sedesService: SedesService,
     private messageService: MessageService
@@ -36,6 +38,10 @@ export class PagesTablasMesasOchentaycincoComponent implements OnInit {
     .catch(() => {
       this.showError('Error de servidor', 'Ocurrió un problema con el servicio. Comúniquese con soporte')
     })
+  }
+
+  goToPedido(idMesa: number) {
+    this.router.navigate([`/pedidos/pedido/${1}/${idMesa}`]);
   }
 
   showError(summary: string, detail: string): void {

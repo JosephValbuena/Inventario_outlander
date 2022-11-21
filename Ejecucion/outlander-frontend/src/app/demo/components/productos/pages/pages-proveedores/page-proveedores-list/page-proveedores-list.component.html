@@ -1,0 +1,13 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header card">
+        <h1>Proveedores</h1>
+        <p>Aquí podrás encontrar la lista de los proveedores que maneja el bar en todas sus sedes</p>
+    </div>
+    <div class="content-body card">
+        <div class="holder-btn mb-3">
+            <p-button label="Crear nuevo producto" (click)="goToCreate()"></p-button>
+        </div>
+        <app-proveedores-list *ngIf="proveedores != null" [proveedores]="proveedores"></app-proveedores-list>
+    </div>
+</div>

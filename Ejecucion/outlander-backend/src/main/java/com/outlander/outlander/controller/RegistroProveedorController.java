@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.outlander.outlander.model.RegistroProveedor;
+import com.outlander.outlander.model.Sede;
 import com.outlander.outlander.service.RegistroProveedorService;
 
 @RestController
@@ -40,5 +41,10 @@ public class RegistroProveedorController {
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public ResponseEntity<RegistroProveedor> actualizarRegistroProv(@RequestBody RegistroProveedor registroProveedor) {
         return this.service.actualizarRegistroProv(registroProveedor);
+    }
+    
+    @RequestMapping(value = "/findBySede", method = RequestMethod.POST)
+    public ResponseEntity<List<RegistroProveedor>> obtenerPorSede(@RequestBody Sede sede) {
+        return this.service.getRegistrosPorSede(sede);
     }
 }

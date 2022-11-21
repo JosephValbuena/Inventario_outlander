@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="manejoProveedor()">
+    <div class="input flex flex-column ">
+        <label for="float-input" class="text-lg mb-2">Nombre</label>
+        <input type="text" pInputText placeholder="nombre de proveedor" formControlName="nombre"> 
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Descripción</label>
+        <input type="text" pInputText placeholder="Marca del producto" formControlName="descripcion"> 
+    </div>
+    <div class="holder-btn">
+        <button *ngIf="type === 'create'" pButton pRipple type="submit" label="Crear proveedor" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+        <button *ngIf="type === 'edit'" pButton pRipple type="submit" label="Editar proveedor" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+    </div>
+</form>

@@ -1,0 +1,20 @@
+<form [formGroup]="form" (ngSubmit)="manejoInventario()">
+    <div class="input flex flex-column ">
+        <label for="float-input" class="text-lg mb-2">Producto</label>
+        <p-dropdown *ngIf="type == 'create'" [options]="productos" formControlName="producto" placeholder="Seleccione un producto" optionLabel="nombre" [showClear]="true"></p-dropdown>
+        <p-dropdown *ngIf="type == 'edit'" [options]="productos" formControlName="producto" placeholder="Seleccione un producto" optionLabel="nombre" [showClear]="true" [disabled]="true"></p-dropdown>
+    </div>
+    <div class="input flex flex-column ">
+        <label for="float-input" class="text-lg mb-2">Sede</label>
+        <p-dropdown *ngIf="type == 'create'" [options]="sedes" formControlName="sede" placeholder="Seleccione una sede" optionLabel="nombre" [showClear]="true"></p-dropdown>
+        <p-dropdown *ngIf="type == 'edit'" [options]="sedes" formControlName="sede" placeholder="Seleccione una sede" optionLabel="nombre" [showClear]="true" [disabled]="true"></p-dropdown>
+    </div>
+    <div class="input flex flex-column mt-3">
+        <label for="float-input" class="text-lg mb-2">Cantidad</label>
+        <input type="number" pInputText placeholder="cantidad" formControlName="cantidad"> 
+    </div>
+    <div class="holder-btn">
+        <button *ngIf="type === 'create'" pButton pRipple type="submit" label="Crear inventario" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+        <button *ngIf="type === 'edit'" pButton pRipple type="submit" label="Editar inventario" class="p-button-primary w-full mt-3" [disabled]="!valid"></button>
+    </div>
+</form>

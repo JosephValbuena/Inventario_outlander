@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.outlander.outlander.utils.FormatLLocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -43,6 +45,7 @@ public class RegistroProveedor {
     @JoinColumn(name = "sede_id")
     private Sede sede;
 
+    @FormatLLocalDateTime
     @Column(name = "registro_prov_fecha")
     private LocalDateTime fecha_registro;
 

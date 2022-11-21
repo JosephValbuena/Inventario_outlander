@@ -7,7 +7,7 @@
     <div class="content-body card">
         <div class="grid-s">
             <div class="col3 available p-card" *ngFor="let mesa of mesas">
-                <button pButton pRipple type="button" label="" class="button-white p-button-text">Mesa No. <span>{{mesa.numMesa}}</span></button>
+                <button pButton pRipple type="button" label="" (click)="goToPedido(mesa.idMesa)" class="button-white p-button-text">Mesa No. <span>{{mesa.numMesa}}</span></button>
             </div>
         </div>
     </div>

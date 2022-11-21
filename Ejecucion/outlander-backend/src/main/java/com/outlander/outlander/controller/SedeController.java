@@ -19,15 +19,15 @@ import com.outlander.outlander.service.SedeService;
 @CrossOrigin("*")
 @RequestMapping("/space/campus")
 public class SedeController {
-    
+
     @Autowired
     private SedeService sedeService;
-    
+
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Sede> getAll() {
         return this.sedeService.getAll();
     }
-    
+
     @RequestMapping(value = "/find/{id}", method = RequestMethod.GET)
     public Sede findById(@PathVariable Long id) {
         return this.sedeService.get(id);
@@ -37,7 +37,7 @@ public class SedeController {
     public ResponseEntity<Sede> crearSede(@RequestBody Sede sede) {
         return this.sedeService.crearSede(sede);
     }
-    
+
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Sede> actualizarSede(@RequestBody Sede sede) {
         return this.sedeService.actualizarSede(sede);
@@ -47,6 +47,12 @@ public class SedeController {
     public ResponseEntity<Sede> obtenerPorNombre(@PathVariable String nombre) {
         return this.sedeService.obtenerPorNombre(nombre);
     }
+
+    @RequestMapping(value = "/obtener-por-usuario/{usuario}", method = RequestMethod.GET)
+    public ResponseEntity<Sede> obtenerPorUsuario(@PathVariable Long idUsuario) {
+        return this.sedeService.obtenerPorUsuario(idUsuario);
+    }
+
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public ResponseEntity<Sede> deleteSede(@PathVariable Long id) {
         Sede sede = sedeService.get(id);

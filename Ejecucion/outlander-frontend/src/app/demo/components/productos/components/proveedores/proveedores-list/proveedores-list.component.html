@@ -1,0 +1,22 @@
+<p-table [value]="proveedores" styleClass="p-datatable-gridlines" responsiveLayout="scroll" 
+    [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} elementos" 
+    [rowsPerPageOptions]="[10,25,50]">
+    <ng-template pTemplate="caption">
+        Tabla de proveedores
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="text-align: center;">Nombre</th>
+            <th style="text-align: center;">Descripción</th>
+            <th style="text-align: center;">Editar</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-proveedor>
+        <tr>
+            <td style="text-align: center;">{{proveedor.nombre}}</td>
+            <td style="text-align: center;">{{proveedor.descripcion}}</td>
+            <td style="text-align: center;"><p-button icon="pi pi-pencil" (click)="goToEdit(proveedor.idProveedor)"></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>

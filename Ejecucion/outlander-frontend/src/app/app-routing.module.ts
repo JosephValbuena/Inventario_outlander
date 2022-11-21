@@ -18,6 +18,7 @@ import { AuthGuard } from './security/auth.guard';
                     { path: 'espacio', loadChildren: () => import('./demo/components/espacio/espacio.module').then(m => m.EspacioModule) },
                     { path: 'core', loadChildren: () => import('./demo/components/core/core.module').then(m => m.CoreModule) },
                     { path: 'productos', loadChildren: () => import('./demo/components/productos/productos.module').then(m => m.ProductosModule) },
+                    { path: 'pedidos', loadChildren: () => import('./demo/components/pedidos/pedidos.module').then(m => m.PedidosModule) },
                 ],
             },
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },

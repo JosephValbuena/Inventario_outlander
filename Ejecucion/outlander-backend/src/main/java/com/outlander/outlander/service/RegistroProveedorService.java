@@ -1,5 +1,7 @@
 package com.outlander.outlander.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.outlander.outlander.model.InventarioProducto;
 import com.outlander.outlander.model.Producto;
 import com.outlander.outlander.model.Proveedor;
 import com.outlander.outlander.model.RegistroProveedor;
@@ -33,10 +36,13 @@ public class RegistroProveedorService extends GenericServiceImpl<RegistroProveed
     private ProveedorRepository proveedorRepository;
 
     @Autowired
+    private InventarioProductoService inventarioProductoService;
+ 
+    @Autowired
     private SedeRepository sedeRepository;
 
+    @SuppressWarnings("null")
     public ResponseEntity<RegistroProveedor> crearRegistroProv(RegistroProveedor request) {
-
         Optional<Producto> productoOpt = this.productoRepository.findById(request.getProducto().getIdProducto());
         if (productoOpt.isEmpty()) {
             return new ResponseEntity<RegistroProveedor>(HttpStatus.NOT_FOUND);
@@ -49,12 +55,23 @@ public class RegistroProveedorService extends GenericServiceImpl<RegistroProveed
         if (sedeOpt.isEmpty()) {
             return new ResponseEntity<RegistroProveedor>(HttpStatus.NOT_FOUND);
         }
+        ResponseEntity<InventarioProducto> inv = this.inventarioProductoService.findInventarioBySedeAndProducto(request.getProducto().getIdProducto(),
+                request.getSede().getIdSede());
+        if (inv.getBody() == null) {
+            return new ResponseEntity<RegistroProveedor>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        InventarioProducto inventario = inv.getBody();
+        inventario.setCantidad((short) (inventario.getCantidad()+request.getCantidad()));
+        inv = this.inventarioProductoService.actualizarInventarioProducto(inventario);
+        if (inv.getBody() == null) {
+            return new ResponseEntity<RegistroProveedor>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         RegistroProveedor registroProveedor = new RegistroProveedor();
         registroProveedor.setProducto(request.getProducto());
         registroProveedor.setProveedor(request.getProveedor());
         registroProveedor.setCantidad(request.getCantidad());
         registroProveedor.setSede(request.getSede());
-        registroProveedor.setFecha_registro(request.getFecha_registro());
+        registroProveedor.setFecha_registro(LocalDateTime.now());
         RegistroProveedor nuevoRegistro = this.repository.save(registroProveedor);
         if (nuevoRegistro == null) {
             return new ResponseEntity<RegistroProveedor>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -63,7 +80,6 @@ public class RegistroProveedorService extends GenericServiceImpl<RegistroProveed
     }
 
     public ResponseEntity<RegistroProveedor> actualizarRegistroProv(RegistroProveedor request) {
-
         Optional<RegistroProveedor> registroProvOpt = this.repository.findById(request.getIdRegistro());
         if (registroProvOpt.isEmpty()) {
             return new ResponseEntity<RegistroProveedor>(HttpStatus.NOT_FOUND);
@@ -94,6 +110,19 @@ public class RegistroProveedorService extends GenericServiceImpl<RegistroProveed
         return new ResponseEntity<RegistroProveedor>(actualizarRegistro, HttpStatus.OK);
     }
 
+    public ResponseEntity<List<RegistroProveedor>> getRegistrosPorSede(Sede sede) {
+        List<RegistroProveedor> registros = null;
+        try {
+            registros = this.repository.findBySede(sede);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<List<RegistroProveedor>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        if (registros.isEmpty()) {
+            return new ResponseEntity<List<RegistroProveedor>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<RegistroProveedor>>(registros, HttpStatus.OK);
+    }
     @Override
     public CrudRepository<RegistroProveedor, Long> getDao() {
         return this.repository;

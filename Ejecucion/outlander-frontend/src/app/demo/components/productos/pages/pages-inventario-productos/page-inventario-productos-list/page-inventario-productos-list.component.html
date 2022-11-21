@@ -1,0 +1,13 @@
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header card">
+        <h1>Inventario de productos</h1>
+        <p>Aquí podrás encontrar la lista de los inventarios de productos que maneja el bar en todas sus sedes</p>
+    </div>
+    <div class="content-body card">
+        <div class="holder-btn mb-3">
+            <p-button label="Crear nuevo inventario" (click)="goToCreate()"></p-button>
+        </div>
+        <app-inventario-productos-list *ngIf="inventarios != null" [inventarios]="inventarios"></app-inventario-productos-list>
+    </div>
+</div>

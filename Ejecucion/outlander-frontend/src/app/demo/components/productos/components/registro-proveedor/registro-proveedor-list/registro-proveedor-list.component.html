@@ -1,0 +1,26 @@
+<p-table [value]="registros" styleClass="p-datatable-gridlines" responsiveLayout="scroll" 
+    [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} elementos" 
+    [rowsPerPageOptions]="[10,25,50]">
+    <ng-template pTemplate="caption">
+        Tabla de registros de entrada de productos
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="text-align: center;">Producto</th>
+            <th style="text-align: center;">Proveedor</th>
+            <th style="text-align: center;">Sede</th>
+            <th style="text-align: center;">Cantidad</th>
+            <th style="text-align: center;">Fecha ingreso</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-registro>
+        <tr>
+            <td style="text-align: center;">{{registro.producto.nombre}}</td>
+            <td style="text-align: center;">{{registro.proveedor.nombre}}</td>
+            <td style="text-align: center;">{{registro.sede.nombre}}</td>
+            <td style="text-align: center;">{{registro.cantidad}}</td>
+            <td style="text-align: center;">{{registro.fecha_registro}}</td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -65,6 +65,19 @@ public class PedidoService extends GenericServiceImpl<Pedido, Long> implements P
         return new ResponseEntity<Pedido>(pedidoUpdate, HttpStatus.OK);
     }
 
+    public ResponseEntity<Pedido> obtenerPedidoPorMesaActivo(Long idMesa) {
+        Pedido pedido = null;
+        try {
+            pedido = this.repository.findByMesaActivo(idMesa, "abierto");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Pedido>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        if (pedido == null) {
+            return new ResponseEntity<Pedido>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Pedido>(pedido, HttpStatus.OK);
+    }
     @Override
     public CrudRepository<Pedido, Long> getDao() {
         return this.repository;

@@ -1,1 +1,15 @@
-<p>pages-productos-edit works!</p>
+<p-toast position="top-center"></p-toast>
+<div class="content">
+    <div class="content-header card p-3 flex align-items-center justify-content-between">
+        <div class="title">
+            <h1>Editar un producto</h1>
+            <p>En este espacio podrás editar un producto de la aplicación</p>
+        </div>
+        <div class="btn-back">
+            <button pButton pRipple label="Regresar" icon="pi pi-angle-left" class="p-button-secondary" (click)="goBack()"></button>
+        </div>
+    </div>
+    <div class="content-body card">
+        <app-productos-edit *ngIf="producto != null" [type]="type" [producto]="producto" [idToEdit]="idToEdit" (manejoProductos)="editarProducto($event)"></app-productos-edit>
+    </div>
+</div>

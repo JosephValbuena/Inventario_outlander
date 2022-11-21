@@ -37,6 +37,11 @@ public class ProveedorController {
     public ResponseEntity<Proveedor> createProveedor(@RequestBody Proveedor proveedor) {
         return this.proveedorService.createProveedor(proveedor);
     }
+    
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public ResponseEntity<Proveedor> updateProveedor(@RequestBody Proveedor proveedor) {
+        return this.proveedorService.updateProveedor(proveedor);
+    }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public ResponseEntity<Proveedor> deleteProveedor(@PathVariable Long id) {

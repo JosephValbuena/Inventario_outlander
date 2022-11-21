@@ -82,6 +82,21 @@ public class SedeService extends GenericServiceImpl<Sede, Long> implements SedeS
         return new ResponseEntity<Sede>(sedes.get(0), HttpStatus.OK);
     }
     
+    public ResponseEntity<Sede> obtenerPorUsuario(Long idUsuario) {
+        List<Sede> allSedes = this.sedeRepository.findAll();
+        if (allSedes.isEmpty()) {
+            return new ResponseEntity<Sede>(HttpStatus.NOT_FOUND);
+        }
+        for (Sede sede : allSedes) {
+            for (Usuario usuario : sede.getUsuarios()) {
+                if (usuario.getIdUsuario() == idUsuario) {
+                    return new ResponseEntity<Sede>(sede, HttpStatus.OK);
+                }
+            }
+        }
+        return new ResponseEntity<Sede>(HttpStatus.NOT_FOUND);
+    }
+    
     private boolean validarSiExiste(String nombre) {
         List<Sede> sedes = this.sedeRepository.findByNombre(nombre);
         if (sedes.isEmpty()) {

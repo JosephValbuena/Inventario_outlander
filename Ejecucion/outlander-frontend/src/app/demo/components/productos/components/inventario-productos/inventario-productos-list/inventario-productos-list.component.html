@@ -1,0 +1,25 @@
+
+<p-table [value]="inventarios" styleClass="p-datatable-gridlines" responsiveLayout="scroll" 
+[paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} elementos" 
+[rowsPerPageOptions]="[10,25,50]">
+<ng-template pTemplate="caption">
+    Tabla de inventarios
+</ng-template>
+<ng-template pTemplate="header">
+    <tr>
+        <th style="text-align: center;">producto</th>
+        <th style="text-align: center;">Cantidad</th>
+        <th style="text-align: center;">Sede</th>
+        <th style="text-align: center;">Editar</th>
+    </tr>
+</ng-template>
+<ng-template pTemplate="body" let-inventario>
+    <tr>
+        <td style="text-align: center;">{{inventario.producto.nombre}}</td>
+        <td style="text-align: center;">{{inventario.cantidad}}</td>
+        <td style="text-align: center;">{{inventario.sede.nombre}}</td>
+        <td style="text-align: center;"><p-button icon="pi pi-pencil" (click)="goToEdit(inventario.idInventario)"></p-button></td>
+    </tr>
+</ng-template>
+</p-table>

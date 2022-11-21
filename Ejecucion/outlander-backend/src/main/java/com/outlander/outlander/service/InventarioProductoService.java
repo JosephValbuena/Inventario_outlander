@@ -1,5 +1,6 @@
 package com.outlander.outlander.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class InventarioProductoService extends GenericServiceImpl<InventarioProd
     private SedeRepository sedeRepository;
 
     public ResponseEntity<InventarioProducto> crearInventarioProducto(InventarioProducto request) {
+        List<InventarioProducto> inventarios = this.repository.findInventariosByProductosAndSede(
+                request.getProducto().getIdProducto(), request.getSede().getIdSede());
+        if (!inventarios.isEmpty()) {
+            return new ResponseEntity<InventarioProducto>(HttpStatus.FOUND);
+        }
         Optional<Producto> productoOpt = this.productoRepository.findById(request.getProducto().getIdProducto());
         if (productoOpt.isEmpty()) {
             return new ResponseEntity<InventarioProducto>(HttpStatus.NOT_FOUND);
@@ -75,6 +81,14 @@ public class InventarioProductoService extends GenericServiceImpl<InventarioProd
         }
         return new ResponseEntity<InventarioProducto>(inventarioCreated, HttpStatus.OK);
 
+    }
+
+    public ResponseEntity<InventarioProducto> findInventarioBySedeAndProducto(Long idProducto, Long idSede) {
+        List<InventarioProducto> inventarios = this.repository.findInventariosByProductosAndSede(idProducto, idSede);
+        if (inventarios.isEmpty()) {
+            return new ResponseEntity<InventarioProducto>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<InventarioProducto>(inventarios.get(0), HttpStatus.OK);
     }
 
     @Override

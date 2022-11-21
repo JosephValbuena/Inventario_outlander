@@ -40,6 +40,7 @@ export class AppMenuComponent implements OnInit {
                         { label: 'Productos', icon: 'pi pi-map', routerLink: ['/productos/productos'] },
                         { label: 'Inventario productos', icon: 'pi pi-box', routerLink: ['/productos/inventario'] },
                         { label: 'Proveedores', icon: 'pi pi-car', routerLink: ['/productos/proveedores'] },
+                        { label: 'Registro productos', icon: 'pi pi-database', routerLink: ['/productos/registro-productos'] },
                     ]
                 },
                 {

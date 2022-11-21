@@ -31,6 +31,11 @@ public class PedidoController {
     public Pedido findById(@PathVariable Long id) {
         return this.service.get(id);
     }
+    
+    @RequestMapping(value = "/findByMesa/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Pedido> findByMesa(@PathVariable Long id) {
+        return this.service.obtenerPedidoPorMesaActivo(id);
+    }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<Pedido> createPedido(@RequestBody Pedido pedido) {
